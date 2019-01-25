@@ -1,7 +1,7 @@
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.lc.tt.lc.core.mapper
-#数据库连接池
+
 spring:
   datasource:
     username: root
@@ -10,7 +10,7 @@ spring:
 logging:
   config: classpath:logging-config.xml
   level:
-    com.lc.tt.lc.core.mapper: debug #dao所在的包文件
+    com.lc.tt.lc.core.mapper: debug #dao锟斤拷锟节的帮拷锟侥硷拷
     org.springframework.jdbc.core: error
     root: info
     org.hibernate: ERROR
