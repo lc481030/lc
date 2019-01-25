@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.tt.lc.core.mapper.TSupplierMapper">
+
+  <resultMap id="BaseResultMap" type="com.lc.tt.lc.core.entity.TSupplier">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="c_supplier_Id" jdbcType="VARCHAR" property="cSupplierId" />
+    <result column="c_supplier_Name" jdbcType="VARCHAR" property="cSupplierName" />
+    <result column="c_project_id" jdbcType="VARCHAR" property="cProjectId" />
+    <result column="c_supplier_result" jdbcType="INTEGER" property="cSupplierResult" />
+    <result column="c_site_userid" jdbcType="VARCHAR" property="cSiteUserid" />
+    <result column="c_site_main_userid" jdbcType="VARCHAR" property="cSiteMainUserid" />
+    <result column="c_site_manager_userid" jdbcType="VARCHAR" property="cSiteManagerUserid" />
+    <result column="c_site_fmajordomo_userid" jdbcType="VARCHAR" property="cSiteFmajordomoUserid" />
+    <result column="c_site_majordomo_userid" jdbcType="VARCHAR" property="cSiteMajordomoUserid" />
+    <result column="c_ststem_num" jdbcType="VARCHAR" property="cStstemNum" />
+    <result column="c_part_num" jdbcType="VARCHAR" property="cPartNum" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_supplier
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lc.tt.lc.core.entity.TSupplier">
+    <selectKey keyProperty="pid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_supplier (id, create_at, update_at, 
+      c_supplier_Id, c_supplier_Name, c_project_id, 
+      c_supplier_result, c_site_userid, c_site_main_userid, 
+      c_site_manager_userid, c_site_fmajordomo_userid, 
+      c_site_majordomo_userid, c_ststem_num, c_part_num
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, 
+      #{cSupplierId,jdbcType=VARCHAR}, #{cSupplierName,jdbcType=VARCHAR}, #{cProjectId,jdbcType=VARCHAR}, 
+      #{cSupplierResult,jdbcType=INTEGER}, #{cSiteUserid,jdbcType=VARCHAR}, #{cSiteMainUserid,jdbcType=VARCHAR}, 
+      #{cSiteManagerUserid,jdbcType=VARCHAR}, #{cSiteFmajordomoUserid,jdbcType=VARCHAR}, 
+      #{cSiteMajordomoUserid,jdbcType=VARCHAR}, #{cStstemNum,jdbcType=VARCHAR}, #{cPartNum,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lc.tt.lc.core.entity.TSupplier">
+    update t_supplier
+    set id = #{id,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      c_supplier_Id = #{cSupplierId,jdbcType=VARCHAR},
+      c_supplier_Name = #{cSupplierName,jdbcType=VARCHAR},
+      c_project_id = #{cProjectId,jdbcType=VARCHAR},
+      c_supplier_result = #{cSupplierResult,jdbcType=INTEGER},
+      c_site_userid = #{cSiteUserid,jdbcType=VARCHAR},
+      c_site_main_userid = #{cSiteMainUserid,jdbcType=VARCHAR},
+      c_site_manager_userid = #{cSiteManagerUserid,jdbcType=VARCHAR},
+      c_site_fmajordomo_userid = #{cSiteFmajordomoUserid,jdbcType=VARCHAR},
+      c_site_majordomo_userid = #{cSiteMajordomoUserid,jdbcType=VARCHAR},
+      c_ststem_num = #{cStstemNum,jdbcType=VARCHAR},
+      c_part_num = #{cPartNum,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select pid, id, create_at, update_at, c_supplier_Id, c_supplier_Name, c_project_id,
+    c_supplier_result, c_site_userid, c_site_main_userid, c_site_manager_userid, c_site_fmajordomo_userid, 
+    c_site_majordomo_userid, c_ststem_num, c_part_num
+    from t_supplier
+    where pid = #{pid}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select pid, id, create_at, update_at, c_supplier_Id, c_supplier_Name, c_project_id,
+    c_supplier_result, c_site_userid, c_site_main_userid, c_site_manager_userid, c_site_fmajordomo_userid, 
+    c_site_majordomo_userid, c_ststem_num, c_part_num
+    from t_supplier
+  </select>
+</mapper>

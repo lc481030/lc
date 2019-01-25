@@ -1,0 +1,17 @@
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lc.tt.lc.core.mapper
+#数据库连接池
+spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://127.0.0.1:3306/sta_point?characterEncoding=utf8
+logging:
+  config: classpath:logging-config.xml
+  level:
+    com.lc.tt.lc.core.mapper: debug #dao所在的包文件
+    org.springframework.jdbc.core: error
+    root: info
+    org.hibernate: ERROR
+debug: false
