@@ -27,6 +27,7 @@ public class SpApi {
         return tSupplierService.select(id);
     }
 
+    /*1*/
     @GetMapping("sp/select1")
     private TSupplier select1(String id){
         log.info("---fucna十大按我说的就阿瑟东---------"+id);
